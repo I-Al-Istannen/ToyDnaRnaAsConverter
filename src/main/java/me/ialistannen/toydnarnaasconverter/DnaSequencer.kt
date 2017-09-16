@@ -54,12 +54,11 @@ class DnaSequencer {
 
     private fun findFirstOccurrence(input: String, codons: Collection<Codon>): Int {
         var startIndex = Integer.MAX_VALUE
-        for ((_, sequence) in codons) {
-            val tmpStart = input.indexOf(sequence)
-            if (tmpStart != -1 && tmpStart < startIndex) {
-                startIndex = tmpStart
-            }
-        }
+        codons
+                .asSequence()
+                .map { input.indexOf(it.sequence) }
+                .filter { it != -1 && it < startIndex }
+                .forEach { startIndex = it }
 
         return startIndex
     }
