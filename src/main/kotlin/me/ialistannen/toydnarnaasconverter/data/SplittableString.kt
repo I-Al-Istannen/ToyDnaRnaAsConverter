@@ -1,18 +1,15 @@
 package me.ialistannen.toydnarnaasconverter.data
 
-import java.util.stream.Collectors
-
 /**
  * A [Splittable] String.
  */
 data class SplittableString(private val data: String) : Splittable<SplittableString> {
 
     override fun split(): List<Splittable<SplittableString>> {
-        return data.codePoints()
-                .mapToObj(Character::toChars)
-                .map { String(it) }
+        return data.toCharArray()
+                .map { it.toString() }
                 .map { it.toSplittableString() }
-                .collect(Collectors.toList())
+                .toList()
     }
 
     override fun concatParts(parts: Collection<SplittableString>): Splittable<SplittableString> {
