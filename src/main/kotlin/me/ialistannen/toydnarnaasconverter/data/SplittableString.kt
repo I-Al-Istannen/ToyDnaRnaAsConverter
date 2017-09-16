@@ -1,5 +1,7 @@
 package me.ialistannen.toydnarnaasconverter.data
 
+import java.util.stream.Collectors
+
 /**
  * A [Splittable] String.
  */
@@ -10,7 +12,7 @@ data class SplittableString(private val data: String) : Splittable<SplittableStr
                 .mapToObj(Character::toChars)
                 .map { String(it) }
                 .map { it.toSplittableString() }
-                .toList()
+                .collect(Collectors.toList())
     }
 
     override fun concatParts(parts: Collection<SplittableString>): Splittable<SplittableString> {

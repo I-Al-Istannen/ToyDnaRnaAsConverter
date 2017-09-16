@@ -7,7 +7,6 @@ import me.ialistannen.toydnarnaasconverter.codon.toCodon
 import me.ialistannen.toydnarnaasconverter.exception.IllegalCodonFoundException
 import me.ialistannen.toydnarnaasconverter.exception.NoStartCodonFoundException
 import java.util.*
-import java.util.concurrent.ThreadLocalRandom
 
 /**
  * Converts a DNA base sequence to a list of amino acids.
@@ -97,7 +96,9 @@ class DnaSequencer {
         }
 
         private fun getRandomAcidCodon(): String {
-            val acid = AminoAcid.values()[ThreadLocalRandom.current().nextInt(AminoAcid.values().size)]
+            val acid = AminoAcid.values()[
+                    Random().nextInt(AminoAcid.values().size)
+                    ]
             return acid.codons[0]
         }
     }
