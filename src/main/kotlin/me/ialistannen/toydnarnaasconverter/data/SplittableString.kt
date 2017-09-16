@@ -1,7 +1,5 @@
 package me.ialistannen.toydnarnaasconverter.data
 
-import kotlin.streams.toList
-
 /**
  * A [Splittable] String.
  */
