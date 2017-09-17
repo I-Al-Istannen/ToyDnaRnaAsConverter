@@ -26,7 +26,7 @@ class DnaSequencer {
         val codons = ArrayList<Codon>()
 
         var i = 0
-        while (i * CODON_LENGTH < transcribedPart.length - CODON_LENGTH) {
+        while (i * CODON_LENGTH <= transcribedPart.length - CODON_LENGTH) {
             val triplet = transcribedPart.substring(i * CODON_LENGTH, (i + 1) * CODON_LENGTH)
             val codon: Codon = triplet.toCodon() ?: throw IllegalCodonFoundException(triplet)
 
